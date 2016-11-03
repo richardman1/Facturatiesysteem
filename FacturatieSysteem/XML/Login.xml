@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Login xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Login.xsd">
+	<gebruikers>
+		<gebruiker id="1">
+			<gebruikersnaam>b2</gebruikersnaam>
+			<wachtwoord>facturatie</wachtwoord>
+		</gebruiker>
+		<gebruiker id="2">
+			<gebruikersnaam>b1</gebruikersnaam>
+			<wachtwoord>fysio</wachtwoord>
+		</gebruiker>
+		<gebruiker id="3">
+			<gebruikersnaam>b4</gebruikersnaam>
+			<wachtwoord>facturatie4</wachtwoord>
+		</gebruiker>
+		<gebruiker id="4">
+			<gebruikersnaam> </gebruikersnaam>
+			<wachtwoord> </wachtwoord>
+		</gebruiker>		
+	</gebruikers>
+</Login>

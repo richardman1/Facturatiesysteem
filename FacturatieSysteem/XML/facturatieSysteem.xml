@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><facturatieSysteem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="facturatieSysteem.xsd">
+	<verzekeringsmaatschappij maatschappijnr="001">
+      <naam>CGZ Verzekeringen</naam>
+      <adres>Oranjeboomstraat 112</adres>
+      <postcode>3311AC</postcode>
+      <woonplaats>Rotterdam</woonplaats>
+      <KVKNummer>81546371</KVKNummer>
+      <rekeningNummer>921386577</rekeningNummer>
+	  <verzekeringsTypes>
+	  	  <verzekeringsType typenr="001">
+	         <naam>CGZ-Basic</naam>
+	         <verplichtEigenRisico>200</verplichtEigenRisico>
+	         <behandelCodes>
+	            <behandelcode>004</behandelcode>
+	            <behandelcode>005</behandelcode>
+	            <behandelcode>007</behandelcode>
+				<behandelcode>001</behandelcode>
+				<behandelcode>002</behandelcode>
+			</behandelCodes>
+	      </verzekeringsType>
+	      <verzekeringsType typenr="002">
+	         <naam>CGZ-All-risk</naam>
+	         <verplichtEigenRisico>285</verplichtEigenRisico>
+	         <behandelCodes>
+	            <behandelcode>004</behandelcode>
+	            <behandelcode>005</behandelcode>
+	            <behandelcode>006</behandelcode>
+	            <behandelcode>007</behandelcode>
+	            <behandelcode>008</behandelcode>
+	            <behandelcode>009</behandelcode>
+	            <behandelcode>010</behandelcode>
+	         	<behandelcode>001</behandelcode>
+					<behandelcode>002</behandelcode>
+					<behandelcode>003</behandelcode>
+				</behandelCodes>
+	      </verzekeringsType>
+		
+			</verzekeringsTypes>    
+   </verzekeringsmaatschappij>
+</facturatieSysteem>

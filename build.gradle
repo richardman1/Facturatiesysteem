@@ -1,0 +1,111 @@
+
+def projectName = "Facturatiesysteem" 
+def rootDir = "C:/xampp/htdocs/facturatie/"
+
+subprojects {
+	apply plugin: "java"
+	apply plugin: "eclipse"
+
+    version = '1.0'			// version will be postfixed to jar-name
+	
+	repositories {
+        mavenCentral()
+	}
+
+	configurations { 
+		runtime
+	}
+}
+
+project(':FacturatieSysteem') {
+
+	def classesDir = new File(rootDir)
+	
+	task classesDirExists << {
+		if (!classesDir.isDirectory()) {
+			println 'Directory ' + classesDir + ' does not exist. Creating it.'
+			classesDir.mkdirs()
+		}
+	}
+
+	task deploylocal(type: Copy){
+		if (classesDir.isDirectory()) {
+			from ('../FacturatieSysteem/resources'){
+				into 'resources'
+			}
+			from ('../FacturatieSysteem/XML'){
+				into 'XML'
+			}
+			from ('configurations.runtime') {
+				into 'libs'
+			}
+			from ('../FacturatieSysteem/Libraries/log4j-1.2.17.jar'){
+				into 'libs'
+			}
+			from ('../FacturatieSysteem/Libraries/iText'){
+				into 'bin/iText'
+			}
+			from ('../FacturatieClient/build/classes/main/facturatie') {
+				into 'bin/facturatieClient'
+			}
+			from('../FacturatieClient/bin/Shared'){
+				into 'bin/facturatieClient/client'
+			}
+			from('../FacturatieClient/bin/facturatie/client'){
+				into 'bin/facturatieClient/client'
+			}
+			from ('../FacturatieSysteem/bin/facturatieSysteem') {
+				into 'bin/facturatieSysteem'
+			}
+			from ('../FacturatieSysteem/bin'){
+				into 'bin'
+			}
+			from('../Facturatiesysteem/bin/facturatieSysteem/KlantenSubsysteem/BusinessLayer/KlantManagerIFrmi.class'){
+				into 'bin/Shared'
+			}
+			from('../FacturatieSysteem/bin/org'){
+				into 'bin/org'
+			}
+			from('../FacturatieSysteem/bin/facturatieSysteem/main/dataTableModel'){
+				into 'bin/facturatieSysteem/main'
+			}
+			from('../FacturatieSysteem/bin/facturatieSysteem/main/helpPanel'){
+				into 'bin/facturatieSysteem/main'
+			}
+			from('../FacturatieSysteem/bin/facturatieSysteem/main/PresentationLayer'){
+				into 'bin/facturatieSysteem/main'
+			}
+			from('../FacturatieSysteem/bin/facturatieSysteem/LoginSubSysteem/BusinessLayer'){
+				into 'bin/facturatieSysteem/main'
+			}
+			from('../FacturatieSysteem/bin/facturatieSysteem/LoginSubSysteem/DataStoreLayer'){
+				into 'bin/facturatieSysteem/main'
+			}
+			from('../FacturatieSysteem/bin/facturatieSysteem/LoginSubSysteem/EntityLayer'){
+				into 'bin/facturatieSysteem/main'
+			}
+			into { classesDir }
+		}
+		dependsOn classesDirExists
+	}
+	build.finalizedBy deploylocal
+	
+}
+
+project(':FacturatieClient') {
+
+    dependencies {
+        compile project(':FacturatieSysteem'), 'log4j:log4j:1+'
+	}
+
+	task deploylocal(type: Copy) {
+		from configurations.runtime
+		from 'build/classes/main'
+		from '../FacturatieSysteem/build/classes/main'
+		from '../shared/build/classes/main'
+		into 'build/deploy'
+		dependsOn build
+	}
+	build.finalizedBy deploylocal
+}
+

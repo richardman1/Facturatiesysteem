@@ -1,0 +1,81 @@
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="Clienten">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Client" maxOccurs="unbounded" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ClientGegevens">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element type="xs:string" name="Naam"/>
+                    <xs:element type="xs:string" name="Adres"/>
+                    <xs:element type="xs:string" name="Postcode"/>
+                    <xs:element type="xs:string" name="Woonplaats"/>
+                    <xs:element type="xs:string" name="Geboortedatum"/>
+                    <xs:element type="xs:string" name="Telefoonnummer"/>
+                    <xs:element type="xs:string" name="Email"/>
+                    <xs:element type="xs:string" name="BetaalMethode"/>
+                    <xs:element type="xs:string" name="ResterendEigenRisico"/>
+                    <xs:element type="xs:string" name="Rekeningnummer"/>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="VerzekeringPolissen">
+              	<xs:complexType>
+              		<xs:sequence>
+		              	<xs:element name="VerzekeringPolis" maxOccurs="unbounded" minOccurs="0">
+		                	<xs:complexType>
+		                  		<xs:sequence>
+		                    	 <xs:element type="xs:string" name="VerzekeringType"/>
+			                     <xs:element type="xs:float" name="EigenRisico"/>
+			                     <xs:element type="xs:string" name="startDatum"/>
+			                     <xs:element type="xs:string" name="eindDatum"/>
+			                  	</xs:sequence>
+			                <xs:attribute type="xs:string" name="PolisNummer"/>
+			                </xs:complexType>
+			            </xs:element>
+	              	</xs:sequence>
+	            </xs:complexType>
+	          </xs:element>
+			  
+              <xs:element name="Facturen">
+              	<xs:complexType>
+              		<xs:sequence>
+		              	<xs:element name="Factuur" maxOccurs="unbounded" minOccurs="0">
+		                	<xs:complexType>
+		                  		<xs:sequence>
+		                    	 <xs:element type="xs:string" name="FactuurDatum"/>
+			                     <xs:element type="xs:string" name="VervalDatum"/>
+								 <xs:element name="FactuurBehandelingen" maxOccurs="unbounded" minOccurs="0">
+									<xs:complexType>
+										<xs:sequence>
+											<xs:element name="FactuurBehandeling" maxOccurs="unbounded" minOccurs="0">
+												<xs:complexType>
+													<xs:sequence>
+														<xs:element type="xs:string" name="BehandelafspraakID" maxOccurs="unbounded" minOccurs="0"/>
+													</xs:sequence>
+												<xs:attribute type="xs:string" name="BehandelingID"/>
+												</xs:complexType>
+											</xs:element>
+										</xs:sequence>
+									</xs:complexType>
+								 </xs:element>
+			                    <xs:element type="xs:float" name="TevergoedenBedrag"/>
+								<xs:element type="xs:string" name="Status"/>
+								<xs:element type="xs:float" name="Totaalprijs"/>
+			                  	</xs:sequence>
+			                <xs:attribute type="xs:string" name="FactuurNummer"/>
+			                </xs:complexType>
+			            </xs:element>
+	              	</xs:sequence>
+	            </xs:complexType>
+	          </xs:element>
+            </xs:sequence>
+            <xs:attribute type="xs:int" name="BSN"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
